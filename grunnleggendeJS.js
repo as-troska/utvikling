@@ -15,16 +15,26 @@ let objektVariabel = {innhold: "objekt", muligInnhold: "Alt mulig"} // Dette er 
 // Legg merke til at alle linjene over starter med "let". Dette bruker vi når vi "deklarerer" en variabel, dvs oppretter en variabel første gang. Vi bruker ikke dette nøkkelordet neste gang vi refererer til variabelen. En variant av nøkkelordet er "var", men denne har litt annerledes "scope", noe vi kommer tilbake til senere. I eldre bøker er det ofte brukt "var" i stedet for "let"
 
 console.log("Demonstrasjon av variabler")
-console.log("--------------------------")
+console.log("**************************")
 console.log(tekstVariabel)
 console.log(tallVariabel)
 console.log(listeVariabel)
 console.log(objektVariabel)
 console.log("") // En tom linje
 
+tekstVariabel = "En kan også endre innholdet i en variabel"
+
+console.log(tekstVariabel)
+console.log("")
+
 // Linjene over skriver ut innholdet i variablene til konsollen.
 
 console.log("Demonstrasjon av array og objekt")
-console.log("--------------------------")
+console.log("********************************")
 console.log(listeVariabel[1]) // Tallet i hakeparantesen viser til posisjon (index) i listen. Merk at en begynner å telle med null. Merk deg derfor hvilket tall utskriften viser. 
 console.log(objektVariabel.muligInnhold) // Med "dotnotasjon" kan en hente ut egenskapene fra et objekt
+
+/*
+    Konkatinering og operatorer
+    ***************************
+*/
