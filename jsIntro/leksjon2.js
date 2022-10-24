@@ -19,3 +19,6 @@ console.log(funksjoner.storForbokstav("store Moskusokser og andre buskevekster")
 5) Se for deg at du skal ta i mot et tall fra brukeren av en nettside. Brukeren kan skrive inn tallet i en tekstboks og bruke desimaltall. Inputten blir levert som string. Skriv en funksjon som tar i mot stringen og renser denne for vanlige feil som kan oppstå. F.eks kan det hende at brukeren har lagt inn mellomrom for å skille mellom nullene i et stort tall (eks 1 000 000 for en million), eller brukt komma i stedet for punktum for å markere desimaltall. Du kan velge om funksjonen returnerer en fikset string, eller om den gjør om stringen til number og returnerer dette.  Dokumenter og eksporter funksjonen.
 
 */
+
+let tall = "1  0 0 0 0 0 0".split(" ").join("")
+console.log(parseInt(tall, 10))

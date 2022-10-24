@@ -6,6 +6,8 @@
  * @returns {string} En streng hvor alle ord har stor forbokstav
  */
 
+
+
 function storForbokstav(tekstStreng) {
     let ordArray = tekstStreng.split(" ")
     let returnertOrd = "";
@@ -26,6 +28,25 @@ function storForbokstav(tekstStreng) {
 
     return returnertOrd
 }
+
+storForbokstav()
+
+/**
+ * En funksjon som legger sammen to tall
+ * @param {number} parameter1 Et tall
+ * @param {number} parameter2 Enda ett tall
+ * @returns {number} Summen av de to tallene
+ */
+
+function eksempel(parameter1, parameter2) {
+    console.log(parameter1)
+
+    console.log(parameter2)
+
+    return  parameter1 + parameter2
+}
+
+eksempel(9, 3)
 
 
 // Her eksporterer jeg funksjonen over som storForbokstav. Merk at jeg kunne gitt den nytt navn, f.eks exports.Capitalizer = storForbokstav 
