@@ -16,7 +16,23 @@ function skrivUtBand(bandid) {
 function giMegBand(bandid) {
     const navn = db.prepare("SELECT bandnavn FROM band WHERE bandid = ?").get(bandid)    
 
-    const medlemmer = db.prepare("SELECT medlemmer.fornavn, medlemmer.etternavn, band.bandnavn, bandmedlemmer.instrument FROM bandmedlemmer INNER JOIN medlemmer ON bandmedlemmer.medlemmer_idmedlemmer = medlemmer.idmedlemmer INNER JOIN band ON bandmedlemmer.band_bandid = band.bandid WHERE band.bandid = ?").all(bandid)
+    const medlemmer = db.prepare(`SELECT 
+                                    medlemmer.fornavn, 
+                                    medlemmer.etternavn, 
+                                    band.bandnavn, 
+                                    bandmedlemmer.instrument 
+                                  FROM 
+                                    bandmedlemmer 
+                                  INNER JOIN 
+                                    medlemmer 
+                                  ON 
+                                    bandmedlemmer.medlemmer_idmedlemmer = medlemmer.idmedlemmer 
+                                  INNER JOIN 
+                                    band 
+                                  ON 
+                                    bandmedlemmer.band_bandid = band.bandid 
+                                  WHERE 
+                                    band.bandid = ?`).all(bandid)
 
     const band = {
         navn: navn.bandnavn,

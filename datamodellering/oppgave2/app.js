@@ -1,4 +1,3 @@
-const db = require("better-sqlite3")("oppgave2.db");
 const dbqueries = require("./dbqueries")
 const express = require("express");
 const hbs = require("hbs");
@@ -7,8 +6,7 @@ const path = require("path");
 
 const app = express();
 
-const publicPath = path.join(__dirname, "www");
-app.use(express.static(publicPath));
+app.use(express.static(path.join(__dirname, "www")));
 app.use(express.urlencoded({extended: true}))
 
 app.set("view engine", hbs);
@@ -21,6 +19,7 @@ app.get("/visBand", (req, res) => {
 })
 
 app.post("/settInnMedlem", (req, res) => {
+    console.log(req.body)
     let svar = req.body;
     if (svar.avgift == "on") {
         svar.avgift = 1
