@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrer medlem</title>
+</head>
+<body>
+    <form action="/settInnMedlem" method="POST">
+        <label for="fornavn">Fornavn: </label><input type="text" name="fornavn"><br>
+        <label for="etternavn">Etternavn: </label><input type="text" name="etternavn"><br>
+        <label for="gateadresse">Gateadresse: </label><input type="text" name="gateadresse"><br>
+        <label for="postnummer">Postnummer: </label><input type="text" name="postnummer"><br>
+        <label for="poststed">Poststed: </label><input type="text" name="poststed"><br>
+        <label for="avgift">Avgift? </label><input type="checkbox" name="avgift"><br>
+        <label for="fodt">Født: </label><input type="date" name="fodt"><br>
+
+        <button>Sett inn</button>
+    </form>
+    
+</body>
+</html>

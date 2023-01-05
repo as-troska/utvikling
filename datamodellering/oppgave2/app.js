@@ -1,19 +1,38 @@
-const db = require("better-sqlite3")("oppgave2.db")
+const db = require("better-sqlite3")("oppgave2.db");
+const dbqueries = require("./dbqueries")
+const express = require("express");
+const hbs = require("hbs");
+const path = require("path");
 
-function skrivUtBand(bandid) {
-    const navn = db.prepare("SELECT bandnavn FROM band WHERE bandid = ?").get(bandid)    
 
-    const medlemmer = db.prepare("SELECT medlemmer.fornavn, medlemmer.etternavn, band.bandnavn, bandmedlemmer.instrument FROM bandmedlemmer INNER JOIN medlemmer ON bandmedlemmer.medlemmer_idmedlemmer = medlemmer.idmedlemmer INNER JOIN band ON bandmedlemmer.band_bandid = band.bandid WHERE band.bandid = ?").all(bandid)
-    
-    console.log("Bandet " + navn.bandnavn + " har følgende medlemmer:");
-    for (let medlem of medlemmer) {
-        console.log(medlem.fornavn + " " + medlem.etternavn + " - " + medlem.instrument)
-        
+const app = express();
+
+const publicPath = path.join(__dirname, "www");
+app.use(express.static(publicPath));
+app.use(express.urlencoded({extended: true}))
+
+app.set("view engine", hbs);
+app.set("views", path.join(__dirname, "./views/pages"))
+hbs.registerPartials(path.join(__dirname, "./views/partials"))
+
+app.get("/visBand", (req, res) => {
+    let id = req.query.id;
+    res.render("band.hbs", dbqueries.giMegBand(id))  
+})
+
+app.post("/settInnMedlem", (req, res) => {
+    let svar = req.body;
+    if (svar.avgift == "on") {
+        svar.avgift = 1
+    } else {
+        svar.avgift = 0
     }
-    console.log(" ")
-}
+    dbqueries.settInnMedlem(svar.fornavn, svar.etternavn, svar.gateadresse, svar.postnummer, svar.poststed, svar.avgift, svar.fodt)
+    res.redirect("back")
+})
 
-skrivUtBand("1")
-skrivUtBand("2")
-skrivUtBand("3")
 
+
+app.listen(3000, () => {
+    console.log("Server listening at port 3000, http://localhost:3000")
+})
